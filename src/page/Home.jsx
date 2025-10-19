@@ -53,36 +53,7 @@ function Home() {
                     </button>
                 </div>
             </section>
-            <section id='men&women'>
-                <div className=' flex justify-center gap-10 p-4'>
-                    <div>
-                        <img
-                            src="./src/image/Male.jpg"
-                            alt=""
-                            className=' rounded' />
-                        <NavLink
-                            to="/Men"
-                            className=" flex justify-center text-decoration-none">
-                            <button
-                                type="button"
-                                className=' border-2 rounded w-[250px] mt-2 border-black text-black hover:bg-blue-500 transition duration-500'
-                            >Men</button>
-                        </NavLink>
-                    </div>
-                    <div>
-                        <img
-                            src="./src/image/Female.jpg"
-                            alt="" className=' rounded' />
-                        <NavLink
-                            to="/Women"
-                            className=" flex justify-center text-decoration-none">
-                            <button
-                                type="button"
-                                className=' border-2 rounded w-[250px] mt-2 border-black text-black hover:bg-pink-500 hover:text-white hover:border-pink-500 transition duration-500'>Women</button>
-                        </NavLink>
-                    </div>
-                </div>
-            </section>
+            
             <section>
                 <h1 className=' p-6'>Men Section</h1>
                 <Products />
