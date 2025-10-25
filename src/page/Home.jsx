@@ -1,9 +1,13 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
-import Products from './Products';
+// import Products from './Products';
+import Product_search from '../components/Product_search';
+import ProductList from '../components/Productlists';
+import Products from '../components/Products';
 
 function Home() {
     return (
+        
         <div>
             <section id='slides'>
                 <div
@@ -53,12 +57,13 @@ function Home() {
                     </button>
                 </div>
             </section>
-            
             <section>
-                <h1 className=' p-6'>Men Section</h1>
+                <div className=' mx-30'>
+                    <h1 className=' p-6'>Treading 🔥🔥🔥</h1>
+                <Products/>
+                <h1 className=' p-6'>Tops Choose for Sports</h1>
                 <Products />
-                <h1 className=' p-6'>Women Section</h1>
-                <Products />
+                </div>
             </section>
         </div>
 

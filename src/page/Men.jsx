@@ -1,11 +1,11 @@
 import React from "react";
-import Products from "./Products";
+import Products from "../components/Products";
 
 
 function Men() {
     return (
-        <div className="flex justify-center items-center min-h-[80vh]">
-            <Products />
+        <div className="">
+            <Products/>
         </div>
     );
 }

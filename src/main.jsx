@@ -5,7 +5,9 @@ import '@fortawesome/fontawesome-free/css/all.min.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
+
 import App from './App.jsx'
+import { CartProvider } from './page/Cartcontext.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

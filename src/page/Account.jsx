@@ -1,9 +1,112 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 
 function Account() {
+    const [user, setUser] = useState(null);
+    const [form, setForm] = useState({ username: "", password: "" });
+    const [isRegistering, setIsRegistering] = useState(false);
+
+    useEffect(() => {
+        const savedUser = JSON.parse(localStorage.getItem("user"));
+        if (savedUser) setUser(savedUser);
+    }, []);
+
+    const handleChange = (e) => {
+        setForm({ ...form, [e.target.name]: e.target.value });
+    };
+
+    const handleLogin = (e) => {
+        e.preventDefault();
+        // Only for UI demo, no actual auth
+        alert("Login clicked!");
+    };
+
+    const handleRegister = (e) => {
+        e.preventDefault();
+        alert("Register clicked!");
+    };
+
+    const handleLogout = () => setUser(null);
+
     return (
-        <div className=' bg-orange-400'>Account</div>
-    )
+        <div className="flex justify-center items-center min-h-screen bg-gray-100 px-4">
+            <div className="bg-white p-10 rounded-3xl shadow-lg w-full max-w-md">
+                {!user ? (
+                    <>
+                        <h2 className="text-3xl font-bold mb-6 text-center">
+                            {isRegistering ? "Create Account" : "Login"}
+                        </h2>
+
+                        {/* Form */}
+                        <form
+                            onSubmit={isRegistering ? handleRegister : handleLogin}
+                            className="space-y-5" // 👈 vertical spacing between inputs
+                        >
+                            <input
+                                type="text"
+                                name="username"
+                                placeholder="Username"
+                                value={form.username}
+                                onChange={handleChange}
+                                className="w-full border border-gray-300 p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-black mt-3"
+                            />
+                            <input
+                                type="password"
+                                name="password"
+                                placeholder="Password"
+                                value={form.password}
+                                onChange={handleChange}
+                                className="w-full border border-gray-300 p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-black mt-5 mb-5"
+                            />
+                            <button
+                                type="submit"
+                                className="w-full bg-black text-white py-3 rounded-xl hover:bg-gray-800 transition mb-3"
+                            >
+                                {isRegistering ? "Register" : "Login"}
+                            </button>
+                        </form>
+
+                        {/* Switch between login/register */}
+                        <p className="text-center mt-6 text-sm text-gray-500">
+                            {isRegistering ? (
+                                <>
+                                    Already have an account?{" "}
+                                    <button
+                                        onClick={() => setIsRegistering(false)}
+                                        className="text-black font-semibold hover:underline"
+                                    >
+                                        Log in
+                                    </button>
+                                </>
+                            ) : (
+                                <>
+                                    Don't have an account?{" "}
+                                    <button
+                                        onClick={() => setIsRegistering(true)}
+                                        className="text-black font-semibold hover:underline"
+                                    >
+                                        Register
+                                    </button>
+                                </>
+                            )}
+                        </p>
+                    </>
+                ) : (
+                    <>
+                        <h2 className="text-3xl font-bold mb-6 text-center">Welcome, {user.username}!</h2>
+                        <div className="text-center space-y-4">
+                            <p className="text-gray-600">You’re logged in 🎉</p>
+                            <button
+                                onClick={handleLogout}
+                                className="bg-red-500 text-white px-6 py-3 rounded-xl hover:bg-red-600 transition"
+                            >
+                                Logout
+                            </button>
+                        </div>
+                    </>
+                )}
+            </div>
+        </div>
+    );
 }
 
-export default Account
+export default Account;

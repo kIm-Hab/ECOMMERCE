@@ -1,5 +1,6 @@
 import React, { useRef }  from "react";
 // import ProductCard from "./Productcard";
+import { SlArrowLeft,SlArrowRight } from "react-icons/sl";
 
 function Products() {
     const items = [
@@ -28,36 +29,7 @@ function Products() {
             title: "Stylish Hoodies",
             price: 39.99,
         },
-        {
-            image: "https://www.sportsdirect.com/images/imgzoom/53/53019301_xxl.jpg",
-            title: "Stylish Hoodies",
-            price: 39.99,
-        },
-        {
-            image: "https://www.sportsdirect.com/images/imgzoom/53/53019301_xxl.jpg",
-            title: "Stylish Hoodies",
-            price: 39.99,
-        },
-        {
-            image: "https://www.sportsdirect.com/images/imgzoom/53/53019301_xxl.jpg",
-            title: "Stylish Hoodies",
-            price: 39.99,
-        },
-        {
-            image: "https://www.sportsdirect.com/images/imgzoom/53/53019301_xxl.jpg",
-            title: "Stylish Hoodies",
-            price: 39.99,
-        },
-        {
-            image: "https://www.sportsdirect.com/images/imgzoom/53/53019301_xxl.jpg",
-            title: "Stylish Hoodies",
-            price: 39.99,
-        },
-        {
-            image: "https://www.sportsdirect.com/images/imgzoom/53/53019301_xxl.jpg",
-            title: "Stylish Hoodies",
-            price: 39.99,
-        },
+        
     ];
     const scrollRef = useRef(null);
 
@@ -71,19 +43,19 @@ function Products() {
     };
 
     return (
-        <div className="relative w-full bg-gray-50 py-8 overflow-hidden">
+        <div className="relative w-full bg-gray-100 py-8 overflow-hidden">
             {/* Left Arrow */}
             <button
                 onClick={() => scroll("left")}
                 className="absolute left-4 top-1/2 -translate-y-1/2 z-10  rounded-full p-2 hover:scale-105 transition"
             >
-                <span className="carousel-control-prev-icon bg-gray-500"></span>
+                <SlArrowLeft className="text-2xl"/>
             </button>
 
             {/* Scrollable Cards */}
             <div
                 ref={scrollRef}
-                className="flex overflow-x-auto gap-6 no-scrollbar scroll-smooth px-16 py-3"
+                className="flex overflow-x-auto gap-6 no-scrollbar scroll-smooth px-16 pb-10"
             >
                 {items.map((item, i) => (
                     <div
@@ -113,7 +85,7 @@ function Products() {
                 onClick={() => scroll("right")}
                 className="absolute right-4 top-1/2 -translate-y-1/2 z-10  rounded-full p-2  hover:scale-105 transition"
             >
-                <span className="carousel-control-next-icon bg-gray-500"></span>
+                <SlArrowRight className="text-2xl"/>
             </button>
         </div>
     );
