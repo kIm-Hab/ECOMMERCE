@@ -1,12 +1,10 @@
 @import "tailwindcss";
 
-#logo {
-    font-family: cursive;
+@theme {
+    --color-test: rgb();
+
 }
 
-#Men&Women :hover {
-    color: white;
-}
 
 .no-scrollbar::-webkit-scrollbar {
     display: none;
@@ -15,4 +13,11 @@
 .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+
+.clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }

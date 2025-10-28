@@ -32,7 +32,7 @@ function Nav() {
                     className={({ isActive }) =>
                         isActive
                             ? "text-black font-semibold border-b-2 border-black pb-1 text-decoration-none "
-                            : "text-black transition text-decoration-none "
+                            : "text-black transition text-decoration-none bg-test"
                     }
                 >
                     Men

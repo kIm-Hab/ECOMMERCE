@@ -2,8 +2,8 @@ import React from 'react'
 
 function footer() {
     return (
-        <div>
-            <footer className=' px-9 py-4 bg-gray-800 text-white'>
+        <div className=' bg-gray-800'>
+            <footer className=' px-9 py-4 bg-gray-800 text-white mx-10'>
                 <div className=' flex justify-between'>
                     <ul>
                         <dt>Product</dt>

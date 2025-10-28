@@ -57,12 +57,12 @@ function Home() {
                     </button>
                 </div>
             </section>
-            <section>
-                <div className=' mx-30'>
-                    <h1 className=' p-6'>Treading 🔥🔥🔥</h1>
+            <section className=' bg-gray-300'>
+                <div className=' mx-30 pb-20'>
+                    <h1 className=' p-6 '>Treading 🔥🔥🔥</h1>
                 <Products/>
-                <h1 className=' p-6'>Tops Choose for Sports</h1>
-                <Products />
+                <h1 className=' p-6'>Tops Choose for Summer</h1>
+                <Products/>
                 </div>
             </section>
         </div>
