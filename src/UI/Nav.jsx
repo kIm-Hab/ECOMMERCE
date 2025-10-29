@@ -14,7 +14,7 @@ function Nav() {
                 to="/"
                 className="text-4xl font-extrabold text-black mr-170"
             >
-                <img src="src/image/logo.jpg" alt="Logo" className="w-[50px]" />
+                <img src="/image/logo.jpg" alt="Logo" className="w-[50px]" />
             </NavLink>
 
             {/* Navigation Links */}
