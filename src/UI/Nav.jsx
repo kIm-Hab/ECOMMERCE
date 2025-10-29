@@ -19,13 +19,20 @@ function Nav() {
             </NavLink>
 
             {/* Navigation Links */}
-            <NavLink
-                to="/"
-                className="text-4xl font-extrabold text-black mr-170"
-            >
-                <i class="fa-solid fa-house w-6 h-6"></i>
-            </NavLink>
+            
             <div className="flex items-center gap-6 ">
+
+                <NavLink
+                    to="/"
+                    className={({ isActive }) =>
+                        isActive
+                            ? "text-black font-semibold border-b-2 border-black pb-1 text-decoration-none"
+                            : "text-black transition"
+                    }
+                >
+                    <i class="fa-solid fa-house"></i>
+                </NavLink>
+                
                 <NavLink
                     to="/Women"
                     className={({ isActive }) =>
