@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { useCart } from "../page/Cartcontext";
+import logo from "../image/logo.jpg";
 
 function Nav() {
     const { cart } = useCart();
@@ -14,7 +15,7 @@ function Nav() {
                 to="/"
                 className="text-4xl font-extrabold text-black mr-170"
             >
-                <img src="/image/logo.jpg" alt="Logo" className="w-[50px]" />
+                <img src={logo} alt="Logo" className="w-[50px]" />
             </NavLink>
 
             {/* Navigation Links */}
