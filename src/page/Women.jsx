@@ -9,7 +9,7 @@ function Women() {
 
   // Fetch all products, then filter to "women" category
   useEffect(() => {
-    fetch("https://clothing-db-6.onrender.com/Allproduct")
+    fetch("https://clothing-db-8.onrender.com/Allproduct")
       .then(res => res.json())
       .then(allData => {
         const womenProducts = allData.filter(

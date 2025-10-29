@@ -11,7 +11,7 @@ function Products() {
 
     // Fetch first 6 products from API
     useEffect(() => {
-        fetch("https://clothing-db-6.onrender.com/Allproduct")
+        fetch("https://clothing-db-8.onrender.com/Allproduct")
             .then((res) => res.json())
             .then((data) => setItems(data.slice(0, 6)))
             .catch((e) => console.log("Error fetching products:", e));
