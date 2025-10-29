@@ -3,22 +3,21 @@ import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import { useCart } from "../page/Cartcontext";
 
 function Products() {
-    const [items, setItems] = useState([]); // fix: use "items"
-    const scrollRef = useRef(null);
+    const [items, setItems] = useState([]); // store first 6 products
+    const scrollRef = useRef(null); // reference for horizontal scroll container
     const { addToCart } = useCart();
-    const [selectedProduct, setSelectedProduct] = useState(null);
-    const [selectedSize, setSelectedSize] = useState(null);
+    const [selectedProduct, setSelectedProduct] = useState(null); // popup product
+    const [selectedSize, setSelectedSize] = useState(null); // size selection
 
-    // Fetch API and show only first 6 products
+    // Fetch first 6 products from API
     useEffect(() => {
-        fetch("https://clothing-db-2.onrender.com/products")
-            .then(res => res.json())
-            .then(data => {
-                setItems(data.slice(0, 6)); // only first 6 products
-            })
-            .catch(e => console.log(e));
+        fetch("https://clothing-db-6.onrender.com/Allproduct")
+            .then((res) => res.json())
+            .then((data) => setItems(data.slice(0, 6)))
+            .catch((e) => console.log("Error fetching products:", e));
     }, []);
 
+    // Scroll the product container left or right
     const scroll = (direction) => {
         const container = scrollRef.current;
         const scrollAmount = 300;
@@ -28,16 +27,19 @@ function Products() {
         });
     };
 
+    // Open popup for a product
     const openPopup = (product) => {
         setSelectedProduct(product);
         setSelectedSize(null);
     };
 
+    // Close popup
     const closePopup = () => {
         setSelectedProduct(null);
         setSelectedSize(null);
     };
 
+    // Add product with selected size to cart
     const handleAddToCart = () => {
         if (!selectedSize) {
             alert("Please select a size before adding to cart.");
@@ -49,6 +51,7 @@ function Products() {
 
     return (
         <div className="relative w-full bg-gray-100 py-8 overflow-hidden rounded-2xl">
+
             {/* Left Arrow */}
             <button
                 onClick={() => scroll("left")}
@@ -57,20 +60,21 @@ function Products() {
                 <SlArrowLeft className="text-2xl" />
             </button>
 
-            {/* Scrollable Cards */}
+            {/* Scrollable Product Cards */}
             <div
                 ref={scrollRef}
                 className="flex overflow-x-auto gap-6 no-scrollbar scroll-smooth px-16 pb-10"
             >
-                {items.map((item, i) => (
+                {items.map((item, index) => (
                     <div
-                        key={i}
-                        className="bg-white rounded-xl shadow-md hover:shadow-black transition-all duration-300 p-3 flex-shrink-0 w-64 cursor-pointer"
+                        key={index}
+                        className="bg-white rounded shadow-md hover:shadow-black transition-all duration-300 p-3 flex-shrink-0 w-64 cursor-pointer"
+                        onClick={() => openPopup(item)}
                     >
                         <img
                             src={item.img}
                             alt={item.title}
-                            className="w-full h-56 object-cover rounded-lg"
+                            className="w-full h-56 object-contain"
                         />
                         <div className="mt-2">
                             <h2 className="font-semibold text-gray-800 text-sm line-clamp-2">
@@ -80,10 +84,10 @@ function Products() {
                         </div>
                         <button
                             onClick={(e) => {
-                                e.stopPropagation();
+                                e.stopPropagation(); // prevent triggering card click
                                 openPopup(item);
                             }}
-                            className="w-full mt-3 bg-black text-white py-2 rounded-lg hover:bg-gray-800 transition"
+                            className="w-full mt-3 bg-black text-white py-2 rounded hover:bg-gray-800 transition"
                         >
                             View Details
                         </button>
@@ -103,6 +107,8 @@ function Products() {
             {selectedProduct && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
                     <div className="bg-white rounded-2xl shadow-lg p-6 w-[90%] max-w-md relative">
+
+                        {/* Close Button */}
                         <button
                             onClick={closePopup}
                             className="absolute top-3 right-3 text-gray-500 hover:text-black text-lg"
@@ -110,16 +116,17 @@ function Products() {
                             ✕
                         </button>
 
+                        {/* Product Info */}
                         <img
                             src={selectedProduct.img}
                             alt={selectedProduct.title}
-                            className="w-full h-64 object-contain rounded-lg mb-4"
+                            className="w-full h-64 object-contain mb-4"
                         />
                         <h2 className="text-xl font-bold">{selectedProduct.title}</h2>
                         <p className="text-gray-500 mb-2">{selectedProduct.category || ""}</p>
                         <p className="text-lg font-semibold mb-4">${selectedProduct.price}</p>
 
-                        {/* Sizes */}
+                        {/* Size Selection */}
                         {selectedProduct.sizes && (
                             <div className="mb-4">
                                 <p className="font-medium mb-2">Select Size:</p>
@@ -128,7 +135,7 @@ function Products() {
                                         <button
                                             key={size}
                                             onClick={() => setSelectedSize(size)}
-                                            className={`px-4 py-2 border rounded-lg transition ${selectedSize === size
+                                            className={`px-4 py-2 border-1 transition ${selectedSize === size
                                                     ? "bg-black text-white"
                                                     : "bg-white text-black hover:bg-gray-100"
                                                 }`}
@@ -143,7 +150,7 @@ function Products() {
                         {/* Add to Cart */}
                         <button
                             onClick={handleAddToCart}
-                            className="w-full bg-black text-white py-2 rounded-lg hover:bg-gray-800 transition"
+                            className="w-full bg-black text-white py-2 rounded hover:bg-gray-800 transition"
                         >
                             Add to Cart
                         </button>

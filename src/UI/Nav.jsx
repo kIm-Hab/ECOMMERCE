@@ -3,25 +3,28 @@ import { NavLink } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { useCart } from "../page/Cartcontext";
 
-
 function Nav() {
     const { cart } = useCart();
 
     return (
-        <nav className="flex justify-around items-center px-2 bg-white shadow-md sticky top-0 z-50">
+        <nav className="flex justify-around items-center px-2 bg-white shadow-md sticky top-0 z-50 text-decoration-none ">
+
             {/* Logo */}
-            <NavLink to="/" className="text-4xl font-extrabold text-decoration-none text-black mr-170">
-                <img src="src\image\logo.jpg" alt="" className=" w-[50px] "/>
+            <NavLink
+                to="/"
+                className="text-4xl font-extrabold text-black mr-170"
+            >
+                <img src="src/image/logo.jpg" alt="Logo" className="w-[50px]" />
             </NavLink>
 
-            {/* Nav Links */}
-            <div className="flex items-center gap-6">
+            {/* Navigation Links */}
+            <div className="flex items-center gap-6 ">
                 <NavLink
                     to="/Women"
                     className={({ isActive }) =>
                         isActive
-                            ? "text-black font-semibold border-b-2 border-black pb-1 text-decoration-none "
-                            : "text-black transition text-decoration-none "
+                            ? "text-black font-semibold border-b-2 border-black pb-1 text-decoration-none"
+                            : "text-black transition text-decoration-none"
                     }
                 >
                     Women
@@ -31,8 +34,8 @@ function Nav() {
                     to="/Men"
                     className={({ isActive }) =>
                         isActive
-                            ? "text-black font-semibold border-b-2 border-black pb-1 text-decoration-none "
-                            : "text-black transition text-decoration-none bg-test"
+                            ? "text-black font-semibold border-b-2 border-black pb-1 text-decoration-none"
+                            : "text-black transition text-decoration-none"
                     }
                 >
                     Men
@@ -42,22 +45,22 @@ function Nav() {
                     to="/Search"
                     className={({ isActive }) =>
                         isActive
-                            ? "text-black font-semibold border-b-2 border-black pb-1 text-decoration-none "
-                            : "text-black transition text-decoration-none "
+                            ? "text-black font-semibold border-b-2 border-black pb-1 text-decoration-none"
+                            : "text-black transition"
                     }
                 >
-                    <i class="fa-solid fa-magnifying-glass w-6 h-6"></i>
+                    <i className="fa-solid fa-magnifying-glass w-6 h-6"></i>
                 </NavLink>
 
                 <NavLink
                     to="/account"
                     className={({ isActive }) =>
                         isActive
-                            ? "text-black font-semibold border-b-2 border-black pb-1 text-decoration-none "
-                            : "text-black transition text-decoration-none "
+                            ? "text-black font-semibold border-b-2 border-black pb-1 text-decoration-none"
+                            : "text-black transition text-decoration-none"
                     }
                 >
-                    <i class="fa-solid fa-user w-6 h-6"></i>
+                    <i className="fa-solid fa-user w-6 h-6"></i>
                 </NavLink>
 
                 {/* Cart Icon with Badge */}
@@ -65,10 +68,10 @@ function Nav() {
                     <NavLink
                         to="/cart"
                         className={({ isActive }) =>
-                        isActive
-                            ? "text-black font-semibold border-b-2 border-black pb-1 text-decoration-none "
-                            : "text-black transition text-decoration-none "
-                    }
+                            isActive
+                                ? "text-black font-semibold border-b-2 border-black pb-1 text-decoration-none"
+                                : "text-black transition"
+                        }
                     >
                         <FaShoppingCart className="w-6 h-6" />
                     </NavLink>

@@ -1,37 +1,43 @@
 import React, { useState, useEffect } from "react";
 
 function Account() {
-    const [user, setUser] = useState(null);
-    const [form, setForm] = useState({ username: "", password: "" });
-    const [isRegistering, setIsRegistering] = useState(false);
+    const [user, setUser] = useState(null); // current logged-in user
+    const [form, setForm] = useState({ username: "", password: "" }); // form inputs
+    const [isRegistering, setIsRegistering] = useState(false); // toggle between login/register
 
+    // Load saved user from localStorage on mount
     useEffect(() => {
         const savedUser = JSON.parse(localStorage.getItem("user"));
         if (savedUser) setUser(savedUser);
     }, []);
 
+    // Handle input changes
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
+    // Placeholder login (UI only)
     const handleLogin = (e) => {
         e.preventDefault();
-        // Only for UI demo, no actual auth
         alert("Login clicked!");
     };
 
+    // Placeholder registration (UI only)
     const handleRegister = (e) => {
         e.preventDefault();
         alert("Register clicked!");
     };
 
+    // Logout user
     const handleLogout = () => setUser(null);
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100 px-4">
             <div className="bg-white p-10 rounded-3xl shadow-lg w-full max-w-md">
+
                 {!user ? (
                     <>
+                        {/* Login / Register Heading */}
                         <h2 className="text-3xl font-bold mb-6 text-center">
                             {isRegistering ? "Create Account" : "Login"}
                         </h2>
@@ -39,7 +45,7 @@ function Account() {
                         {/* Form */}
                         <form
                             onSubmit={isRegistering ? handleRegister : handleLogin}
-                            className="space-y-5" // 👈 vertical spacing between inputs
+                            className="space-y-5"
                         >
                             <input
                                 type="text"
@@ -65,7 +71,7 @@ function Account() {
                             </button>
                         </form>
 
-                        {/* Switch between login/register */}
+                        {/* Toggle Login/Register */}
                         <p className="text-center mt-6 text-sm text-gray-500">
                             {isRegistering ? (
                                 <>
@@ -92,7 +98,10 @@ function Account() {
                     </>
                 ) : (
                     <>
-                        <h2 className="text-3xl font-bold mb-6 text-center">Welcome, {user.username}!</h2>
+                        {/* Logged-in View */}
+                        <h2 className="text-3xl font-bold mb-6 text-center">
+                            Welcome, {user.username}!
+                        </h2>
                         <div className="text-center space-y-4">
                             <p className="text-gray-600">You’re logged in 🎉</p>
                             <button
@@ -104,6 +113,7 @@ function Account() {
                         </div>
                     </>
                 )}
+
             </div>
         </div>
     );

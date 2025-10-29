@@ -1,14 +1,15 @@
-import React from 'react'
+import React from 'react';
 import { NavLink } from 'react-router-dom';
-// import Products from './Products';
-import Product_search from '../components/Product_search';
-import ProductList from '../components/Productlists';
+// Components
+// import Product_search from '../components/Product_search';
+// import ProductLists from '../components/Productlists';
 import Products from '../components/Products';
 
 function Home() {
     return (
-        
         <div>
+
+            {/* ====== Carousel Section ====== */}
             <section id='slides'>
                 <div
                     id="mycarousel"
@@ -16,12 +17,14 @@ function Home() {
                     data-bs-ride="carousel"
                     data-bs-interval="3000"
                 >
+                    {/* Indicators */}
                     <div className="carousel-indicators">
                         <button type="button" data-bs-target="#mycarousel" data-bs-slide-to="0" className="active"></button>
                         <button type="button" data-bs-target="#mycarousel" data-bs-slide-to="1"></button>
                         <button type="button" data-bs-target="#mycarousel" data-bs-slide-to="2"></button>
                     </div>
 
+                    {/* Slides */}
                     <div className="carousel-inner">
                         <div className="carousel-item active">
                             <img
@@ -49,25 +52,40 @@ function Home() {
                         </div>
                     </div>
 
-                    <button className="carousel-control-prev" type="button" data-bs-slide="prev" data-bs-target="#mycarousel">
+                    {/* Carousel Controls */}
+                    <button
+                        className="carousel-control-prev"
+                        type="button"
+                        data-bs-slide="prev"
+                        data-bs-target="#mycarousel"
+                    >
                         <span className="carousel-control-prev-icon"></span>
                     </button>
-                    <button className="carousel-control-next" type="button" data-bs-slide="next" data-bs-target="#mycarousel">
+                    <button
+                        className="carousel-control-next"
+                        type="button"
+                        data-bs-slide="next"
+                        data-bs-target="#mycarousel"
+                    >
                         <span className="carousel-control-next-icon"></span>
                     </button>
                 </div>
             </section>
-            <section className=' bg-gray-300'>
-                <div className=' mx-30 pb-20'>
-                    <h1 className=' p-6 '>Treading 🔥🔥🔥</h1>
-                <Products/>
-                <h1 className=' p-6'>Tops Choose for Summer</h1>
-                <Products/>
+
+            {/* ====== Product Sections ====== */}
+            <section className="bg-gray-300">
+                <div className="mx-30 pb-20">
+                    {/* Trending Products */}
+                    <h1 className="p-6">Trending 🔥🔥🔥</h1>
+                    <Products />
+
+                    {/* Summer Tops */}
+                    <h1 className="p-6">Tops Choose for Summer</h1>
+                    <Products />
                 </div>
             </section>
         </div>
-
     );
 }
 
-export default Home
+export default Home;
