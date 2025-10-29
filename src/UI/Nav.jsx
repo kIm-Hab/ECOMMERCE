@@ -19,6 +19,12 @@ function Nav() {
             </NavLink>
 
             {/* Navigation Links */}
+            <NavLink
+                to="/"
+                className="text-4xl font-extrabold text-black mr-170"
+            >
+                <i class="fa-solid fa-house w-6 h-6"></i>
+            </NavLink>
             <div className="flex items-center gap-6 ">
                 <NavLink
                     to="/Women"
