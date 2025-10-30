@@ -74,13 +74,13 @@ function Home() {
 
             {/* ====== Product Sections ====== */}
             <section className="bg-gray-300">
-                <div className="mx-30 pb-20">
+                <div className=' px-2'>
                     {/* Trending Products */}
-                    <h1 className="p-6">Trending 🔥🔥🔥</h1>
+                    <h1>Trending 🔥🔥🔥</h1>
                     <Products />
 
                     {/* Summer Tops */}
-                    <h1 className="p-6">Tops Choose for Summer</h1>
+                    <h1>Tops Choose for Summer</h1>
                     <Products />
                 </div>
             </section>
